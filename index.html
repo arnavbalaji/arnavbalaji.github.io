@@ -2,80 +2,573 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arnav Balaji</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <style>
-    body {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    h1, h2 {
-      margin-bottom: 0.3em;
+
+    html {
+      min-height: 100%;
     }
-    .subtitle {
-      color: #666;
-      margin-top: -10px;
+
+    body.main-page {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.58;
+      min-height: 100%;
+      margin: 0;
+      color: #2a2a2a;
+      background: #fbfbfa;
     }
-    nav a {
-      margin-right: 15px;
+
+    .bio-band {
+      width: 100%;
+      background: transparent;
+      border-bottom: none;
+      padding: 1.75rem 0 2rem;
+    }
+
+    /* Wider than a fixed 1000px column so side margins match wide monitors better (Arpit-style single column, just using more width) */
+    .bio-band-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .main-page a {
+      color: #1772d0;
       text-decoration: none;
-      color: #0056b3;
+      transition: color 0.18s ease;
     }
-    .section {
-      margin-top: 40px;
+
+    .main-page a:hover {
+      color: #c41e3a;
+      text-decoration: underline;
     }
-    .links a {
-      margin-right: 12px;
+
+    .research-band {
+      width: 100%;
+      background: transparent;
+      padding: 1.25rem 0 2rem;
+    }
+
+    .research-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .research-section {
+      padding: 0 0 8px;
+      margin: 0;
+      background: transparent;
+    }
+
+    .page-tail {
+      width: 100%;
+      background: transparent;
+      padding: 0 0 2.5rem;
+    }
+
+    .page-tail-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    :root {
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.08);
+      --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      --card-shadow-hover: 0 16px 38px rgba(0, 0, 0, 0.09);
+      --ink: #141414;
+    }
+
+    /* --- Profile (bio): floated photo + intro, inspired by academic lab pages --- */
+    .profile {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.25rem 1.25rem 1.35rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .profile::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .profile-pic {
+      float: left;
+      width: min(100%, 380px);
+      margin: 0 2.25rem 1rem 0;
+      text-align: center;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto 0.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-intro {
+      overflow: hidden;
+      min-width: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #333;
+    }
+
+    .profile-name {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.85rem, 4.2vw, 2.65rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      line-height: 1.08;
+      margin: 0 0 0.35rem;
+    }
+
+    .profile-tagline {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #505050;
+      letter-spacing: 0.03em;
+      margin: 0 0 1rem;
+    }
+
+    .profile-email {
+      margin: 0 0 1.15rem;
+      font-size: 0.98em;
+      color: #1772d0;
+    }
+
+    .profile-email a {
+      color: inherit;
+    }
+
+    .profile-intro p {
+      margin: 0 0 1rem;
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .profile-links {
+      margin-top: 1.1rem;
+      padding-top: 0.35rem;
+      font-size: 14.5px;
+    }
+
+    .profile-links a {
+      margin-right: 0;
+    }
+
+    .profile-links .sep {
+      color: #bbb;
+      margin: 0 0.5rem;
+    }
+
+    /* --- Section Headings --- */
+    .section-heading {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-align: left;
+      padding: 0.25rem 0 0.9rem;
+      margin-top: 0;
+      border-top: none;
+    }
+
+    /* --- Publications --- */
+    .pub {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      padding: 18px 18px;
+      margin: 0 0 14px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.045);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      position: relative;
+    }
+
+    .research-section .pub:first-of-type {
+      margin-top: 0;
+    }
+
+    .pub:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: rgba(23, 114, 208, 0.18);
+    }
+
+    .pub::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 3px;
+      border-radius: 999px;
+      background: rgba(23, 114, 208, 0);
+      transition: background 0.18s ease;
+    }
+
+    .pub:hover::before {
+      background: rgba(23, 114, 208, 0.6);
+    }
+
+    .pub-thumb {
+      flex-shrink: 0;
+      width: 320px;
+      background: #f3f3f2;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .pub:hover .pub-thumb {
+      transform: scale(1.01);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+    }
+    .pub-thumb img,
+    .pub-thumb video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .pub-thumb .placeholder {
+      color: #bbb;
+      font-size: 12px;
+    }
+
+    .pub-info {
+      flex: 1;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: #111;
+      line-height: 1.4;
+    }
+
+    .pub-title a {
+      color: #1772d0;
+    }
+
+    .pub-authors {
+      font-size: 13.5px;
+      color: #555;
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    .pub-authors .me {
+      font-weight: 700;
+      color: #333;
+    }
+
+    .pub-venue {
+      font-size: 13.5px;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    .pub-venue em {
+      font-style: italic;
+    }
+
+    .pub-detail {
+      font-size: 12.5px;
+      margin-top: 4px;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .pub-detail a {
+      margin-right: 4px;
+    }
+
+    .pub-detail .sep {
+      color: #bbb;
+      margin-right: 4px;
+    }
+
+    .pub-tldr {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.52;
+      margin-top: 3px;
+    }
+
+    /* --- Footer --- */
+    .footnote-ec {
+      font-size: 12.5px;
+      color: #777;
+      margin-top: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 18px 0 6px;
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 600px) {
+      .profile-pic {
+        float: none;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto 1.25rem;
+      }
+
+      .profile-pic img {
+        max-width: 280px;
+      }
+
+      .profile-intro {
+        text-align: left;
+      }
+
+      .profile-name,
+      .profile-tagline {
+        text-align: center;
+      }
+
+      .profile-email {
+        text-align: center;
+      }
+
+      .profile-intro p {
+        text-align: left;
+        hyphens: none;
+        -webkit-hyphens: none;
+      }
+
+      .profile-links {
+        text-align: center;
+      }
+
+      .pub {
+        flex-direction: column;
+      }
+
+      .pub-thumb {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .bio-band-inner {
+        padding: 0 20px;
+      }
+
+      .research-inner,
+      .page-tail-inner {
+        padding: 0 20px;
+      }
+
+      .research-band {
+        padding: 2rem 0 2.5rem;
+      }
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Your Name</h1>
-    <p class="subtitle">PhD Student / Researcher / Professor</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<body class="main-page">
+
+  <header class="bio-band">
+    <div class="bio-band-inner">
+      <div class="profile">
+        <div class="profile-pic">
+          <img src="static/profile.jpg" alt="Arnav Balaji">
+        </div>
+        <div class="profile-intro">
+          <h1 class="profile-name">Arnav Balaji</h1>
+          <p class="profile-tagline">Computer Science &amp; Mathematics &middot; UT Austin</p>
+          <div class="profile-email">
+            <a href="mailto:arnavbalaji21@utexas.edu">arnavbalaji21 at utexas dot edu</a>
+          </div>
+          <p>
+            I am an undergraduate studying Computer Science and Mathematics at
+            <a href="https://www.utexas.edu/">The University of Texas at Austin</a>.
+          </p>
+          <p>
+            My interests are in deep learning&mdash;especially modern generative models and representation learning across language and vision, reinforcement learning, and building systems that are robust, reliable, and aligned with real-world constraints.
+          </p>
+          <p>
+            I&rsquo;ve explored these interests in the <a href="https://robin-lab.cs.utexas.edu/">Robot Interactive Intelligence (RobIn)</a> group at UT Austin, advised by
+            <a href="https://robertomartinmartin.com/">Prof.&nbsp;Roberto Mart&iacute;n-Mart&iacute;n</a>, applying learning methods to problems like learning from human videos, safer policy learning and evaluation, and human-robot interaction.
+          </p>
+          <p>
+            I also defended my undergraduate honors thesis on safety in robot learning, focused on how to measure and benchmark safety-relevant behavior in manipulation settings.
+          </p>
+          <div class="profile-links">
+            <a href="https://github.com/arnavbalaji">GitHub</a>
+            <span class="sep">/</span>
+            <a href="https://scholar.google.com/citations?user=EVjukooAAAAJ&hl=en">Google Scholar</a>
+            <span class="sep">/</span>
+            <a href="https://www.linkedin.com/in/arnavbalaji/">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section id="about" class="section">
-    <h2>About</h2>
-    <p>
-      I am a PhD student at [University/Organization]. My research interests include
-      robotics, AI safety, simulation, and embodied intelligence.
-    </p>
-  </section>
+  <main class="page-main">
+    <div class="research-band">
+      <div class="research-inner">
+    <section class="research-section" aria-label="Research">
+    <h2 class="section-heading">Research</h2>
 
-  <section id="research" class="section">
-    <h2>Research</h2>
-    <p>
-      I work on benchmark design, safe robot learning, and simulation environments.
-    </p>
-  </section>
+    <div class="pub">
+      <div class="pub-thumb">
+        <video width="320" height="auto" autoplay loop muted playsinline>
+          <source src="static/images/oopsieverse_fast.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="pub-info">
+        <div class="pub-title">
+          OopsieVerse: A Safety Benchmark with Damage-Aware Simulation for Robot Manipulation
+        </div>
+        <div class="pub-authors">
+          <span class="me">Arnav Balaji</span>*,
+          <a href="https://arpitrf.github.io/">Arpit Bahety</a>*,
+          Sriniket Ambatipudi,
+          Daniel Lam,
+          Junhong Xu,
+          <a href="https://robertomartinmartin.com/">Roberto Mart&iacute;n-Mart&iacute;n</a>
+        </div>
+        <div class="pub-venue">
+          <em>Under review</em>, 2026
+        </div>
+        <div class="pub-detail" style="color:#999; font-style:italic;">
+          Paper / Code / Website coming soon
+        </div>
+        <p class="pub-tldr"><b>TL;DR</b>: A unified, damage-aware simulation framework for household manipulation that makes physical safety measurable, enabling safer data collection, imitation learning, reinforcement learning, and VLA evaluation.</p>
+      </div>
+    </div>
 
-  <section id="publications" class="section">
-    <h2>Publications</h2>
-    <ul>
-      <li>Paper title, Conference/Journal, Year</li>
-      <li>Paper title, Conference/Journal, Year</li>
-    </ul>
-  </section>
+    <div class="pub">
+      <div class="pub-thumb">
+        <img src="static/images/micobot.gif" alt="MiCoBot">
+      </div>
+      <div class="pub-info">
+        <div class="pub-title">
+          <a href="https://robin-lab.cs.utexas.edu/MicoBot/">Mixed-Initiative Dialog for Human-Robot Collaborative Manipulation</a>
+        </div>
+        <div class="pub-authors">
+          <a href="https://alyu.dev/">Albert Yu</a>,
+          <a href="https://www.chengshu.li/">Chengshu Li</a>,
+          Luca Macesanu,
+          <span class="me">Arnav Balaji</span>,
+          Ruchira Ray,
+          <a href="https://www.cs.utexas.edu/~mooney/">Raymond Mooney</a>,
+          <a href="https://robertomartinmartin.com/">Roberto Mart&iacute;n-Mart&iacute;n</a>
+        </div>
+        <div class="pub-venue">
+          <em>International Conference on Robotics and Automation (ICRA)</em>, 2026
+        </div>
+        <div class="pub-detail">
+          <a href="https://robin-lab.cs.utexas.edu/MicoBot/">Website</a>
+          <span class="sep">&bull;</span>
+          <a href="http://arxiv.org/abs/2508.05535v1">Paper</a>
+        </div>
+        <p class="pub-tldr"><b>TL;DR</b>: A system for human-robot collaboration that uses mixed-initiative natural-language dialog so both agents can propose, accept, or reject who completes each step of a task, improving task success and user experience in physical robot trials.</p>
+      </div>
+    </div>
 
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: yourname@university.edu</p>
-    <p class="links">
-      <a href="https://github.com/yourusername">GitHub</a>
-      <a href="https://scholar.google.com/">Google Scholar</a>
-      <a href="https://www.linkedin.com/">LinkedIn</a>
-    </p>
-  </section>
+    <div class="pub">
+      <div class="pub-thumb">
+        <video width="320" height="auto" autoplay loop muted playsinline>
+          <source src="static/images/thesis_combined.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="pub-info">
+        <div class="pub-title">
+          <a href="https://apps.cs.utexas.edu/apps/tech-reports/207628">SafeManiBench: A Unified Benchmark for Safety in Robot Learning</a>
+        </div>
+        <div class="pub-authors">
+          <span class="me">Arnav Balaji</span>
+        </div>
+        <div class="pub-venue">
+          <em>UTCS Undergraduate Honors Thesis</em>, 2025
+        </div>
+        <div class="pub-detail">
+          <a href="https://apps.cs.utexas.edu/apps/sites/default/files/tech_reports/Arnav_Balaji_Thesis_SafeManiBench.pdf">Paper</a>
+        </div>
+        <p class="pub-tldr"><b>TL;DR</b>: A benchmark for physics-grounded damage detection in manipulation, providing a unified mechanism for quantifying the safety of robot actions. Policies trained with damage-based safety metrics learn safer strategies with substantially lower risk.</p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-thumb">
+        <video width="320" height="auto" autoplay loop muted playsinline>
+          <source src="static/images/SafeMimic.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="pub-info">
+        <div class="pub-title">
+          <a href="https://robin-lab.cs.utexas.edu/SafeMimic/">SafeMimic: Towards Safe and Autonomous Human-to-Robot Imitation for Mobile Manipulation</a>
+        </div>
+        <div class="pub-authors">
+          <a href="https://arpitrf.github.io/">Arpit Bahety</a>,
+          <span class="me">Arnav Balaji</span>,
+          <a href="https://babbatem.github.io/">Ben Abbatematteo</a>,
+          <a href="https://robertomartinmartin.com/">Roberto Mart&iacute;n-Mart&iacute;n</a>
+        </div>
+        <div class="pub-venue">
+          <em>Robotics: Science and Systems (RSS)</em>, 2025
+        </div>
+        <div class="pub-detail">
+          <a href="https://robin-lab.cs.utexas.edu/SafeMimic/">Website</a>
+          <span class="sep">&bull;</span>
+          <a href="https://arxiv.org/abs/2506.15847">Paper</a>
+          <span class="sep">&bull;</span>
+          <a href="https://www.youtube.com/watch?v=p7WWkZ-vO0c">Video</a>
+        </div>
+        <p class="pub-tldr"><b>TL;DR</b>: A framework that enables robots to safely and autonomously learn multi-step mobile manipulation tasks from a single human video by segmenting, translating, and adapting the demonstrated actions to their own morphology.</p>
+      </div>
+    </div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page-tail">
+      <div class="page-tail-inner">
+    <p class="footnote-ec">* indicates equal contribution</p>
+
+    <div class="footer">
+      &copy; 2026 Arnav Balaji
+    </div>
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
