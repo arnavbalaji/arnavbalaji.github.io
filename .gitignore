@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Local copies of superseded / source media, kept out of the published site
+.archive/

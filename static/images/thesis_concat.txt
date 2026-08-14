@@ -1,3 +1,0 @@
-file 'thesis.mp4'
-file 'thesis2.mp4'
-file 'thesis3.mp4'

@@ -4,7 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arnav Balaji</title>
-  <meta name="description" content="Arnav Balaji — undergraduate in Computer Science and Mathematics at UT Austin, working on deep learning, robot learning, and safety." />
+  <meta name="description" content="Arnav Balaji is an undergraduate in Computer Science and Mathematics at UT Austin, working on robot learning, safety, and learning from humans in the RobIn lab." />
+
+  <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="static/favicon-180.png" sizes="180x180">
+  <link rel="apple-touch-icon" href="static/favicon-180.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arnav Balaji">
+  <meta property="og:description" content="Undergraduate in Computer Science and Mathematics at UT Austin, working on robot learning, safety, and learning from humans.">
+  <meta property="og:url" content="https://arnavbalaji.github.io/">
+  <meta property="og:image" content="https://arnavbalaji.github.io/static/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arnav Balaji">
+  <meta name="twitter:description" content="Undergraduate in Computer Science and Mathematics at UT Austin, working on robot learning, safety, and learning from humans.">
+  <meta name="twitter:image" content="https://arnavbalaji.github.io/static/og-image.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -49,7 +66,6 @@
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      transition: background 0.25s ease, color 0.25s ease;
     }
 
     /* Soft warm wash behind the hero so the page isn't a flat sheet */
@@ -246,6 +262,7 @@
        Sections
     --------------------------------------------------------------- */
     .section { padding: 10px 0 0; }
+    .section + .section { margin-top: 44px; }
 
     .section-head {
       display: flex;
@@ -269,12 +286,42 @@
       background: var(--rule);
     }
 
-    .section-note {
-      font-size: 0.85rem;
-      color: var(--faint);
-      margin-bottom: 26px;
-      margin-top: -14px;
+    /* ---------------------------------------------------------------
+       Teaching
+    --------------------------------------------------------------- */
+    .teach-lede {
+      font-size: 0.975rem;
+      color: var(--text);
+      margin-bottom: 22px;
+      padding: 0 2px;
     }
+
+    .teach-list { list-style: none; }
+
+    .teach-item {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: baseline;
+      padding: 11px 2px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .teach-item:last-child { border-bottom: none; }
+
+    .teach-term {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .teach-course { font-size: 0.95rem; color: var(--ink); }
+    .teach-course .num { color: var(--muted); }
+
+    .teach-with { font-size: 0.875rem; color: var(--muted); }
+    .teach-with a { color: var(--muted); }
+    .teach-with a:hover { color: var(--accent); }
 
     /* ---------------------------------------------------------------
        Publications
@@ -358,6 +405,24 @@
     .pub-authors a:hover { color: var(--accent); }
     .pub-authors .me { font-weight: 700; color: var(--ink); }
 
+    .pub-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.815rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 9px;
+    }
+    .pub-award::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
     .pub-links {
       display: flex;
       flex-wrap: wrap;
@@ -381,13 +446,6 @@
       background: var(--accent-soft);
       text-decoration: none;
     }
-    .chip.is-pending {
-      color: var(--faint);
-      font-style: italic;
-      font-weight: 400;
-      border-style: dashed;
-    }
-
     .pub-tldr {
       font-size: 0.885rem;
       line-height: 1.58;
@@ -463,6 +521,7 @@
       <a class="nav-brand" href="#top">Arnav Balaji</a>
       <div class="nav-links">
         <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
         <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=EVjukooAAAAJ&amp;hl=en">Scholar</a>
         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arnavbalaji/">LinkedIn</a>
       </div>
@@ -550,9 +609,9 @@
               <div class="pub-authors">
                 <span class="me">Arnav Balaji</span>*,
                 <a target="_blank" rel="noopener noreferrer" href="https://arpitrf.github.io/">Arpit Bahety</a>*,
-                Sriniket Ambatipudi,
-                Daniel Lam,
-                Junhong Xu,
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/asriniket/">Sriniket Ambatipudi</a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/danielwlam/">Daniel Lam</a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://junhongxu.github.io/">Junhong Xu</a>,
                 <a target="_blank" rel="noopener noreferrer" href="https://robertomartinmartin.com/">Roberto Mart&iacute;n-Mart&iacute;n</a>
               </div>
               <div class="pub-links">
@@ -576,17 +635,17 @@
                 <a target="_blank" rel="noopener noreferrer" href="https://robin-lab.cs.utexas.edu/MicoBot/">Mixed-Initiative Dialog for Human-Robot Collaborative Manipulation</a>
               </h3>
               <div class="pub-authors">
-                <a target="_blank" rel="noopener noreferrer" href="https://alyu.dev/">Albert Yu</a>,
-                <a target="_blank" rel="noopener noreferrer" href="https://www.chengshu.li/">Chengshu Li</a>,
-                Luca Macesanu,
+                <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=ZzURcb4AAAAJ&amp;hl=en">Albert Yu</a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://www.chengshuli.me/">Chengshu Li</a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://lucamacesanu.wixsite.com/lucamacesanu">Luca Macesanu</a>,
                 <span class="me">Arnav Balaji</span>,
-                Ruchira Ray,
+                <a target="_blank" rel="noopener noreferrer" href="https://ruchira.framer.ai/">Ruchira Ray</a>,
                 <a target="_blank" rel="noopener noreferrer" href="https://www.cs.utexas.edu/~mooney/">Raymond Mooney</a>,
                 <a target="_blank" rel="noopener noreferrer" href="https://robertomartinmartin.com/">Roberto Mart&iacute;n-Mart&iacute;n</a>
               </div>
               <div class="pub-links">
                 <a target="_blank" rel="noopener noreferrer" class="chip" href="https://robin-lab.cs.utexas.edu/MicoBot/">Website</a>
-                <a target="_blank" rel="noopener noreferrer" class="chip" href="http://arxiv.org/abs/2508.05535v1">Paper</a>
+                <a target="_blank" rel="noopener noreferrer" class="chip" href="https://arxiv.org/abs/2508.05535">Paper</a>
                 <a target="_blank" rel="noopener noreferrer" class="chip" href="https://youtu.be/dnBTqf_Y7TM">Video</a>
               </div>
               <p class="pub-tldr"><b>TL;DR</b>&nbsp; A system for human-robot collaboration that uses
@@ -610,6 +669,7 @@
                 <span class="me">Arnav Balaji</span>
                 &middot; UT Austin Computer Science
               </div>
+              <div class="pub-award">Graduated with Special Honors in Computer Science</div>
               <div class="pub-links">
                 <a target="_blank" rel="noopener noreferrer" class="chip" href="https://apps.cs.utexas.edu/apps/tech-reports/207628">Thesis</a>
               </div>
@@ -648,6 +708,41 @@
           </article>
 
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Teaching</h2>
+          <span class="line"></span>
+        </div>
+
+        <p class="teach-lede">
+          Teaching assistant in the Robot Learning stream of UT&rsquo;s
+          <a target="_blank" rel="noopener noreferrer" href="https://fri.cns.utexas.edu/">Freshman Research Initiative</a>.
+          Mentored students on spatial transforms, kinematics, ROS, and PyTorch (FRI&nbsp;I), and
+          supervised semester-long research projects on diffusion models, world models, and
+          simulation benchmarks (FRI&nbsp;II).
+        </p>
+
+        <ul class="teach-list">
+          <li class="teach-item">
+            <span class="teach-term">Spring 2026</span>
+            <span class="teach-course"><a target="_blank" rel="noopener noreferrer" href="https://www.cs.utexas.edu/~juxu/fri-robot-learning-spring/">Robot Learning</a> <span class="num">&middot; CS&nbsp;309 (FRI&nbsp;I)</span></span>
+            <span class="teach-with">with <a target="_blank" rel="noopener noreferrer" href="https://junhongxu.github.io/">Junhong Xu</a></span>
+          </li>
+          <li class="teach-item">
+            <span class="teach-term">Fall 2025</span>
+            <span class="teach-course">Robot Learning <span class="num">&middot; CS&nbsp;378 (FRI&nbsp;II)</span></span>
+            <span class="teach-with">with <a target="_blank" rel="noopener noreferrer" href="https://junhongxu.github.io/">Junhong Xu</a></span>
+          </li>
+          <li class="teach-item">
+            <span class="teach-term">Spring 2025</span>
+            <span class="teach-course"><a target="_blank" rel="noopener noreferrer" href="https://www.cs.utexas.edu/~abba/fri-robot-learning/">Robot Learning</a> <span class="num">&middot; CS&nbsp;309 (FRI&nbsp;I)</span></span>
+            <span class="teach-with">with <a target="_blank" rel="noopener noreferrer" href="https://babbatem.github.io/">Ben Abbatematteo</a></span>
+          </li>
+        </ul>
       </div>
     </section>
 
