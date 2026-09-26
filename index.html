@@ -373,6 +373,7 @@
       background: var(--rule-soft);
       line-height: 0;
     }
+    .pub-thumb-blank { aspect-ratio: 4 / 3; }
     .pub-thumb img,
     .pub-thumb video {
       width: 100%;
@@ -785,11 +786,7 @@
           <div class="pubs">
 
             <article class="pub">
-              <div class="pub-thumb">
-                <video width="640" height="480" autoplay loop muted playsinline preload="metadata">
-                  <source src="static/images/banging_hammering_preview.mp4" type="video/mp4">
-                </video>
-              </div>
+              <div class="pub-thumb pub-thumb-blank" aria-hidden="true"></div>
               <div class="pub-info">
                 <span class="pub-venue is-quiet">Under Review 2026</span>
                 <h3 class="pub-title">Banging Before Hammering: Developmentally Inspired Pretraining for Robot Skill Learning</h3>
