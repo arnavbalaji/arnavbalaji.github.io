@@ -54,6 +54,13 @@
       --accent-line: rgba(191, 87, 0, 0.28);
       --on-accent: #ffffff;
       --wash-blue: rgba(23, 114, 208, 0.07);
+      --tag-ink: var(--accent);
+      --tag-bg: var(--accent-soft);
+      --tag-line: var(--accent-line);
+      --tag-bg-hover: color-mix(in srgb, var(--accent) 16%, transparent);
+      --quiet-ink: var(--muted);
+      --quiet-bg: var(--rule-soft);
+      --quiet-line: var(--rule);
       --shadow-sm: 0 1px 2px rgba(20, 20, 25, 0.04);
       --shadow-md: 0 10px 30px -12px rgba(20, 20, 25, 0.18);
       --measure: 1080px;
@@ -78,6 +85,14 @@
         --accent-line: rgba(238, 138, 66, 0.36);
         --on-accent: #121214;
         --wash-blue: rgba(80, 150, 230, 0.07);
+        /* Orange tints turn muddy brown over near-black, so tags get a neutral fill */
+        --tag-ink: #f4a161;
+        --tag-bg: rgba(255, 255, 255, 0.06);
+        --tag-line: rgba(255, 255, 255, 0.1);
+        --tag-bg-hover: rgba(255, 255, 255, 0.1);
+        --quiet-ink: #dcdce0;
+        --quiet-bg: rgba(255, 255, 255, 0.08);
+        --quiet-line: rgba(255, 255, 255, 0.12);
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
         --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
         color-scheme: dark;
@@ -97,6 +112,13 @@
       --accent-line: rgba(238, 138, 66, 0.36);
       --on-accent: #121214;
       --wash-blue: rgba(80, 150, 230, 0.07);
+      --tag-ink: #f4a161;
+      --tag-bg: rgba(255, 255, 255, 0.06);
+      --tag-line: rgba(255, 255, 255, 0.1);
+      --tag-bg-hover: rgba(255, 255, 255, 0.1);
+      --quiet-ink: #dcdce0;
+      --quiet-bg: rgba(255, 255, 255, 0.08);
+      --quiet-line: rgba(255, 255, 255, 0.12);
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
       --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
       color-scheme: dark;
@@ -452,17 +474,17 @@
       font-weight: 700;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid var(--accent-line);
+      color: var(--tag-ink);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-line);
       border-radius: 999px;
       padding: 3px 10px;
       margin-bottom: 9px;
     }
     .pub-venue.is-quiet {
-      color: var(--muted);
-      background: var(--rule-soft);
-      border-color: var(--rule);
+      color: var(--quiet-ink);
+      background: var(--quiet-bg);
+      border-color: var(--quiet-line);
     }
 
     .pub-title {
@@ -532,11 +554,11 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      color: var(--accent);
-      border-color: var(--accent-line);
-      background: var(--accent-soft);
+      color: var(--tag-ink);
+      border-color: var(--tag-line);
+      background: var(--tag-bg);
     }
-    .chip-talk:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+    .chip-talk:hover { color: var(--tag-ink); border-color: var(--tag-line); background: var(--tag-bg-hover); }
     .chip-talk svg {
       width: 9px;
       height: 9px;
@@ -715,7 +737,7 @@
 
       <aside class="hero-side">
         <div class="photo-frame">
-          <img src="static/profile.jpg" alt="Arnav Balaji" width="1375" height="1281">
+          <img src="static/rss_profile_photo.jpg" alt="Arnav Balaji" width="912" height="997">
         </div>
 
         <div class="rail">
