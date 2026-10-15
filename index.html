@@ -22,8 +22,7 @@
   <meta name="twitter:description" content="Undergrad at UT Austin studying Computer Science and Mathematics, working on robot learning in the RobIn lab.">
   <meta name="twitter:image" content="https://arnavbalaji.github.io/static/og-image.png">
 
-  <meta name="theme-color" content="#fcfbf9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#121214">
   <script>
     try {
       var savedTheme = localStorage.getItem('theme');
@@ -68,37 +67,8 @@
       color-scheme: light;
     }
 
-    /* Dark tokens: system preference unless the visitor picked light,
-       or forced on by the toggle */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #121214;
-        --bg-elev: #1a1a1e;
-        --ink: #f2f1ee;
-        --text: #d0d0d5;
-        --muted: #a2a3aa;
-        --faint: #76777e;
-        --rule: rgba(255, 255, 255, 0.1);
-        --rule-soft: rgba(255, 255, 255, 0.06);
-        --accent: #ee8a42;          /* lifted burnt orange, readable on dark */
-        --accent-soft: rgba(238, 138, 66, 0.12);
-        --accent-line: rgba(238, 138, 66, 0.36);
-        --on-accent: #121214;
-        --wash-blue: rgba(80, 150, 230, 0.07);
-        /* Orange tints turn muddy brown over near-black, so tags get a neutral fill */
-        --tag-ink: #f4a161;
-        --tag-bg: rgba(255, 255, 255, 0.06);
-        --tag-line: rgba(255, 255, 255, 0.1);
-        --tag-bg-hover: rgba(255, 255, 255, 0.1);
-        --quiet-ink: #dcdce0;
-        --quiet-bg: rgba(255, 255, 255, 0.08);
-        --quiet-line: rgba(255, 255, 255, 0.12);
-        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-        --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
-        color-scheme: dark;
-      }
-    }
-    :root[data-theme="dark"] {
+    /* Dark is the default look; the nav toggle switches to light and remembers it */
+    :root:not([data-theme="light"]) {
       --bg: #121214;
       --bg-elev: #1a1a1e;
       --ink: #f2f1ee;
@@ -107,11 +77,12 @@
       --faint: #76777e;
       --rule: rgba(255, 255, 255, 0.1);
       --rule-soft: rgba(255, 255, 255, 0.06);
-      --accent: #ee8a42;
+      --accent: #ee8a42;          /* lifted burnt orange, readable on dark */
       --accent-soft: rgba(238, 138, 66, 0.12);
       --accent-line: rgba(238, 138, 66, 0.36);
       --on-accent: #121214;
       --wash-blue: rgba(80, 150, 230, 0.07);
+      /* Orange tints turn muddy brown over near-black, so tags get a neutral fill */
       --tag-ink: #f4a161;
       --tag-bg: rgba(255, 255, 255, 0.06);
       --tag-line: rgba(255, 255, 255, 0.1);
@@ -254,12 +225,8 @@
     .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .theme-toggle svg { width: 16px; height: 16px; grid-area: 1 / 1; }
     .theme-toggle .icon-sun { display: none; }
-    :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-    :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
-      :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
-    }
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 
     /* ---------------------------------------------------------------
        Hero
@@ -461,10 +428,7 @@
       display: block;
     }
     /* Several previews have white backgrounds that glare on a dark page */
-    :root[data-theme="dark"] .pub-thumb > * { filter: brightness(0.86); }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .pub-thumb > * { filter: brightness(0.86); }
-    }
+    :root:not([data-theme="light"]) .pub-thumb > * { filter: brightness(0.86); }
 
     .pub-venue {
       display: inline-flex;
@@ -1054,10 +1018,8 @@
     (function () {
       var root = document.documentElement;
       var toggle = document.getElementById('theme-toggle');
-      var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-
       function current() {
-        return root.getAttribute('data-theme') || (systemDark.matches ? 'dark' : 'light');
+        return root.getAttribute('data-theme') || 'dark';
       }
       function label() {
         toggle.setAttribute('aria-label', current() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
@@ -1069,7 +1031,6 @@
         try { localStorage.setItem('theme', next); } catch (e) {}
         label();
       });
-      systemDark.addEventListener('change', label);
       label();
     })();
 
